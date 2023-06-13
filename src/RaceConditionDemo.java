@@ -13,16 +13,13 @@ public class RaceConditionDemo {
             return this.balance;
         }
 
-        public void deposit() {
-            lock.lock();
+        public synchronized void deposit() {
             int newBalance = this.balance + 1 ;
             try {
                 Thread.sleep(3);
                 this.balance = newBalance;
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            } finally {
-                lock.unlock();
             }
         }
     }
@@ -32,6 +29,9 @@ public class RaceConditionDemo {
         @Override
         public void run() {
             account.deposit();
+//            synchronized (account) {
+//                account.deposit();
+//            }
         }
     }
     public static void main(String[] args) {
