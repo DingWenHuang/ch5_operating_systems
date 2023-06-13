@@ -1,3 +1,5 @@
+package socket_programming;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -45,7 +47,7 @@ public class MultiThreadedServer {
                 Socket socket = serverSocket.accept();
 
                 client_number++;
-                System.out.println("Client number # " + client_number + " connecting");
+                System.out.println("socket_programming.Client number # " + client_number + " connecting");
 
                 //create and start new thread
                 new Thread(new HandleClient(socket)).start();

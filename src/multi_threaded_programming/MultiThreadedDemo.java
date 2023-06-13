@@ -1,3 +1,5 @@
+package multi_threaded_programming;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -31,9 +33,9 @@ class PrintChar implements Runnable {
 public class MultiThreadedDemo {
 
     public static void main(String[] args) {
-//        Thread thread1 = new Thread(new PrintNumber(50));
-//        Thread thread2 = new Thread(new PrintNumber(50));
-//        Thread thread3 = new Thread(new PrintChar('a', 50));
+//        Thread thread1 = new Thread(new multi_threaded_programming.PrintNumber(50));
+//        Thread thread2 = new Thread(new multi_threaded_programming.PrintNumber(50));
+//        Thread thread3 = new Thread(new multi_threaded_programming.PrintChar('a', 50));
 //
 //        thread1.start();
 //        thread2.start();
