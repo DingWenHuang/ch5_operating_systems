@@ -1,26 +1,23 @@
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class RaceConditionDemo {
 
     private static Account account = new Account();
     private static class Account {
         private int balance = 0;
-
+        private static Lock lock = new ReentrantLock();
         public int getBalance() {
             return this.balance;
         }
 
         public void deposit() {
+            lock.lock();
             int newBalance = this.balance + 1 ;
-            try {
-                Thread.sleep(3);//休眠3毫秒
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
             this.balance = newBalance;
+            lock.unlock();
         }
     }
 
@@ -44,6 +41,6 @@ public class RaceConditionDemo {
         }
 
         System.out.println("The balance is " + account.getBalance());
-
+        //經過上鎖的功能後，結果可以正確輸出300
     }
 }
