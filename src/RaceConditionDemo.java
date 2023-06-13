@@ -16,8 +16,14 @@ public class RaceConditionDemo {
         public void deposit() {
             lock.lock();
             int newBalance = this.balance + 1 ;
-            this.balance = newBalance;
-            lock.unlock();
+            try {
+                Thread.sleep(3);
+                this.balance = newBalance;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                lock.unlock();
+            }
         }
     }
 
